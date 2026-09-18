@@ -1,8 +1,8 @@
 #include <stdio.h>
-#include <string.h>
 
-int main() {
-printf("Bonjour ESIEE-IT !");
+int main(void) {
+    printf("Bonjour le Monde!\n");
+    return 0;
 }
 
 
