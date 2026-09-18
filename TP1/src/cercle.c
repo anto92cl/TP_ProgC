@@ -3,7 +3,7 @@
 
 int main(void) {
     double rayon = 6.0;
-    double pi = M_PI;
+    double pi = 3.141592653589793;
     double aire = pi * rayon * rayon;
     double perimetre = 2.0 * pi * rayon;
 
