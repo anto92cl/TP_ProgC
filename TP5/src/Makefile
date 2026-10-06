@@ -1,23 +1,24 @@
 CC ?= gcc
-
-CFLAGS=-Wall -Wextra -g
-
-COBJS ?= client.o
-SOBJS ?= serveur.o 
-
-.SUFFIXES: .c .o
+CFLAGS = -Wall -Wextra -Werror -std=c11 -g
 
 SERVER = serveur
 CLIENT = client
+REPERTOIRE = repertoire
 
-all: $(SERVER) $(CLIENT)
+all: $(SERVER) $(CLIENT) $(REPERTOIRE)
 
-$(SERVER): $(SOBJS)
-	$(CC) -o $(SERVER) $(SOBJS)
+$(SERVER): serveur.o
+	$(CC) $(CFLAGS) -o $@ $^
 
-$(CLIENT): $(COBJS)
-	$(CC) -o $(CLIENT) $(COBJS)
+$(CLIENT): client.o
+	$(CC) $(CFLAGS) -o $@ $^
 
-.c.o: 
-	$(CC) -c $*.c
+$(REPERTOIRE): repertoire.o
+	$(CC) $(CFLAGS) -o $@ $^
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+clean:
+	rm -f $(SERVER) $(CLIENT) $(REPERTOIRE) *.o
 
