@@ -1,5 +1,5 @@
 COBJS ?= client.o bmp.o couleur.o
-SOBJS ?= serveur.o 
+SOBJS ?= serveur.o
 
 .SUFFIXES: .c .o
 
@@ -14,6 +14,9 @@ $(SERVER): $(SOBJS)
 $(CLIENT): $(COBJS)
 	gcc -o $(CLIENT) $(COBJS)
 
-.c.o: 
-	gcc -Wall -Werror -ggdb3 -c $*.c
+clean:
+	rm -f $(SERVER) $(CLIENT) *.o
+
+.c.o:
+	gcc -Wall -Werror -std=c11 -ggdb3 -c $*.c
 

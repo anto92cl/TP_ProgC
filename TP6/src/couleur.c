@@ -29,10 +29,11 @@ couleur_compteur *compte_couleur(couleur *c, int csize)
       return NULL;
     }
     compteur->compte_bit = BITS24;
-    compteur->cc.cc24 = calloc(csize, sizeof(couleur_compteur));
-    if (compteur == NULL)
+    compteur->cc.cc24 = calloc(csize, sizeof(couleur24_compteur));
+    if (compteur->cc.cc24 == NULL)
     {
       perror("Erreur: allocation dynamique de memoire\n");
+      free(compteur);
       return NULL;
     }
   }
@@ -46,10 +47,11 @@ couleur_compteur *compte_couleur(couleur *c, int csize)
       return NULL;
     }
     compteur->compte_bit = BITS32;
-    compteur->cc.cc32 = calloc(csize, sizeof(couleur_compteur));
-    if (compteur == NULL)
+    compteur->cc.cc32 = calloc(csize, sizeof(couleur32_compteur));
+    if (compteur->cc.cc32 == NULL)
     {
       perror("Erreur: allocation dynamique de memoire\n");
+      free(compteur);
       return NULL;
     }
   }

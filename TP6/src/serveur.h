@@ -15,7 +15,7 @@
  * en retour
  */
 
-const char *svg_file_path = "pie_chart.svg";
+extern const char *svg_file_path;
 
 int recois_envoie_message(int, char[1024]);
 
